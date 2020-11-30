@@ -1,0 +1,7 @@
+﻿  Lab8.1.1Test.cpp
+C:\Users\LapStore\source\repos\lab8.1\Lab8.1.1Test\Lab8.1.1Test.cpp(1): warning C4603: _CRT_SECURE_NO_WARNINGS: макрос не определен или определение изменилось после использования предкомпилированного заголовка
+C:\Users\LapStore\source\repos\lab8.1\Lab8.1.1Test\Lab8.1.1Test.cpp(1): message : Добавление макроопределения в предкомпилированный заголовок вместо определения его здесь
+C:\Users\LapStore\source\repos\lab8.1\Lab8.1.1Test\Lab8.1.1Test.cpp(3): message : использование предварительно скомпилированного заголовка
+C:\Users\LapStore\source\repos\lab8.1\lab8.1\lab8.1.cpp(28,4): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\LapStore\source\repos\lab8.1\lab8.1\lab8.1.cpp(43,2): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\LapStore\source\repos\lab8.1\lab8.1\lab8.1.cpp(53,20): warning C4018: <: несоответствие типов со знаком и без знака

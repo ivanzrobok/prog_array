@@ -1,90 +1,82 @@
-﻿// lab8.1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿//Варіант 9.
+//Дано літерний рядок, який містить послідовність символів s0, …, sn, … .
+//1. Вияснити, чи є серед цих символів четвірка сусідніх однакових символів.
+//2. Замінити кожну четвірку сусідніх однакових символів парою зірочок “ * *”.
 
+
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <windows.h>
-#include<iomanip>
+
 using namespace std;
-void create(int ** arr, const int row, const int col)
+		
+
+char* change(char* str)
 {
-	for (int i = 0; i < row; i++)
+	if (strlen(str) < 4)
+		return str;
+	char* tmp = new char[strlen(str) * 1 / 2 + 1];
+	char* t = tmp;
+	tmp[0] = '\0';
+	int i = 0;
+	while (str[i + 3] != 0)
 	{
-		for (int j = 0; j < col; j++)
+		if (str[i] == str[i + 1]
+			&& str[i + 2] == str[i + 3]
+			&& str[i] == str[i + 3])
 		{
-			cout << "a[" << i << "]" << "[" << j << "] = ";
-			cin >> arr[i][j];
+
+			strcat(t, "**");
+			t += 2;
+			i += 4;
+			*t = '\0';
+
 		}
-		cout << endl;
-	}
-}
-void print(int** arr, const int row, const int col)
-{
-	for (int i = 0; i < row; i++)
-	{
-		for (int j = 0; j < col; j++)
+		else
 		{
-			cout << setw(4) << arr[i][j];
+			*t++ = str[i++];
+			*t = '\0';
 		}
-		cout << endl;
 	}
-	cout << endl;
+	*t++ = str[i++];
+	*t++ = str[i++];
+	*t = '\0';
+	strcpy(str, tmp);
+	return tmp;
 }
-bool MatrSemetrichna(int** arr, int row, int col)
+using namespace std;
+
+bool find1(char* string)
 {
-	if (row == col) {
+
+	if (strlen(string) < 4)
 		return false;
-	}
-	else
+	for (int i = 0; i < strlen(string) - 1; i++)
 	{
-		for (int i = 0; i < row; i++) {
+		if (string[i] == string[i + 1]
+			&& string[i + 2] == string[i + 3]
+			&& string[i] == string[i + 3])
+			return true;
 
-			for (int j = 0; j < i; j++) {
-
-				if (arr[i][j] != arr[j][i])
-					return false;
-			}
-		}
-		return true;
 	}
-	
+	return false;
 }
-
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	int row, col;
-	cout << "Введіть кількість рядків "; cin >> row;
-	cout << "Введіть кількість  стовпців "; cin >> col;
-	int** arr = new int*[row];
-	for (int i = 0; i < row; i++) {
-		arr[i] = new int[col];
-	}
+	char str [100];
+	cout << "Enter string " << endl;
+	cin.getline(str, 99);
 
-	create(arr, row, col);
-	print(arr, row, col);
+	cout << endl << "Visit four elements ";
+	if (find1(str)==1)
+		cout << "yes";
+	else
+		cout << "no";
+	cout << endl;
 
-	if (MatrSemetrichna (arr,row,col)== false)
-		cout <<endl<<"матриця не симетрична " << endl;
-	if (MatrSemetrichna(arr,row,col) == true)
-		cout << endl << "матриця не симетрична "<<endl;
+	char* dest = new char[151];
+	dest = change(str);
 
-
-	for (int i = 0; i < row; i++) {
-		delete[]arr[i];
-	}
-	delete[]arr;
-
+	cout << "Modified string (param) : " << str << endl;
+	cout << "Modified string (result): " << dest << endl;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
